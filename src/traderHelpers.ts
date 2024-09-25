@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { PreSptModLoader } from "@spt/loaders/PreSptModLoader";
 import { Item } from "@spt/models/eft/common/tables/IItem";
 import { ITraderBase, ITraderAssort } from "@spt/models/eft/common/tables/ITrader";
@@ -36,8 +37,8 @@ export class TraderHelper {
             traderId: baseJson._id,
             seconds: {
                 min: refreshTimeSecondsMin,
-                max: refreshTimeSecondsMax,
-            },
+                max: refreshTimeSecondsMax
+            }
         };
 
         traderConfig.updateTime.push(traderRefreshRecord);
@@ -58,8 +59,8 @@ export class TraderHelper {
             questassort: {
                 started: {},
                 success: {},
-                fail: {},
-            }, // questassort is empty as trader has no assorts unlocked by quests
+                fail: {}
+            } // questassort is empty as trader has no assorts unlocked by quests
         };
     }
 
@@ -73,7 +74,7 @@ export class TraderHelper {
             nextResupply: 0,
             items: [],
             barter_scheme: {},
-            loyal_level_items: {},
+            loyal_level_items: {}
         };
 
         return assortTable;
@@ -90,7 +91,7 @@ export class TraderHelper {
         // Add the base first
         glock.push({ // Add the base weapon first
             _id: "glockBase", // Ids dont matter, as long as they are unique (can use hashUtil.generate() if you dont want to type every id by hand)
-            _tpl: "5a7ae0c351dfba0017554310", // This is the weapons tpl, found on: https://db.sp-tarkov.com/search
+            _tpl: "5a7ae0c351dfba0017554310" // This is the weapons tpl, found on: https://db.sp-tarkov.com/search
         });
 
         // Add barrel
@@ -98,7 +99,7 @@ export class TraderHelper {
             _id: "glockbarrel",
             _tpl: "5a6b60158dc32e000a31138b",
             parentId: "glockBase", // This is a sub item, you need to define its parent its attached to / inserted into
-            slotId: "mod_barrel", // Required for mods, you need to define what 'role' they have
+            slotId: "mod_barrel" // Required for mods, you need to define what 'role' they have
         });
 
         // Add reciever
@@ -106,7 +107,7 @@ export class TraderHelper {
             _id: "glockReciever",
             _tpl: "5a9685b1a2750c0032157104",
             parentId: "glockBase",
-            slotId: "mod_reciever",
+            slotId: "mod_reciever"
         });
 
         // Add compensator
@@ -114,7 +115,7 @@ export class TraderHelper {
             _id: "glockCompensator",
             _tpl: "5a7b32a2e899ef00135e345a",
             parentId: "glockReciever", // The parent of this mod is the reciever NOT weapon, be careful to get the correct parent
-            slotId: "mod_muzzle",
+            slotId: "mod_muzzle"
         });
 
         // Add Pistol grip
@@ -122,7 +123,7 @@ export class TraderHelper {
             _id: "glockPistolGrip",
             _tpl: "5a7b4960e899ef197b331a2d",
             parentId: "glockBase",
-            slotId: "mod_pistol_grip",
+            slotId: "mod_pistol_grip"
         });
 
         // Add front sight
@@ -130,7 +131,7 @@ export class TraderHelper {
             _id: "glockRearSight",
             _tpl: "5a6f5d528dc32e00094b97d9",
             parentId: "glockReciever",
-            slotId: "mod_sight_rear",
+            slotId: "mod_sight_rear"
         });
 
         // Add rear sight
@@ -138,7 +139,7 @@ export class TraderHelper {
             _id: "glockFrontSight",
             _tpl: "5a6f58f68dc32e000a311390",
             parentId: "glockReciever",
-            slotId: "mod_sight_front",
+            slotId: "mod_sight_front"
         });
 
         // Add magazine
@@ -146,7 +147,7 @@ export class TraderHelper {
             _id: "glockMagazine",
             _tpl: "630769c4962d0247b029dc60",
             parentId: "glockBase",
-            slotId: "mod_magazine",
+            slotId: "mod_magazine"
         });
 
         return glock;
@@ -162,7 +163,7 @@ export class TraderHelper {
     * @param location Location of trader (e.g. "Here in the cat shop")
     * @param description Description of trader
     */
-    public addTraderToLocales(baseJson: any, tables: IDatabaseTables, fullName: string, firstName: string, nickName: string, location: string, description: string) {
+    public addTraderToLocales(baseJson: any, tables: IDatabaseTables, fullName: string, firstName: string, nickName: string, location: string, description: string): void {
         // For each language, add locale for the new trader
         const locales = Object.values(tables.locales.global);
 
