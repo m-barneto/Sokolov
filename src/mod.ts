@@ -20,17 +20,18 @@ import { HashUtil } from "@spt/utils/HashUtil";
 import * as baseJson from "../db/base.json";
 
 import { TraderHelper } from "./traderHelpers";
-import { FluentAssortConstructor as FluentAssortCreator } from "./fluentTraderAssortCreator";
-import { ItemTpl } from "@spt/models/enums/ItemTpl";
 import { VFS } from "@spt/utils/VFS";
 import path from "node:path";
 import { jsonc } from "jsonc";
+import { DatabaseService } from "@spt/services/DatabaseService";
+import { IHideoutProduction } from "@spt/models/eft/hideout/IHideoutProduction";
+
+import productionJson = require("../db/production.json");
 
 class Sokolov implements IPreSptLoadMod, IPostDBLoadMod {
     private mod: string;
     private logger: ILogger;
     private traderHelper: TraderHelper;
-    private fluentAssortCreator: FluentAssortCreator;
 
     private static vfs = container.resolve<VFS>("VFS");    
     private static config: SokolovConfig = jsonc.parse(Sokolov.vfs.readFile(path.resolve(__dirname, "../config/config.jsonc")));
@@ -86,9 +87,20 @@ class Sokolov implements IPreSptLoadMod, IPostDBLoadMod {
         
         // Add trader to locale file, ensures trader text shows properly on screen
         // WARNING: adds the same text to ALL locales (e.g. chinese/french/english)
-        this.traderHelper.addTraderToLocales(baseJson, tables, baseJson.name, "Cat", baseJson.nickname, baseJson.location, "This is the cat shop");
+        this.traderHelper.addTraderToLocales(baseJson, tables, baseJson.name, baseJson._id, baseJson.nickname, baseJson.location, "");
+
+        this.loadProductionEntries();
+
 
         this.logger.debug(`[${this.mod}] Loaded in ${performance.now() - startTime} ms.`);
+    }
+
+    private loadProductionEntries() {
+        const databaseService: DatabaseService = container.resolve<DatabaseService>("DatabaseService");
+        const hideoutProductions: IHideoutProduction[] = databaseService.getTables().hideout.production;
+
+        // This needs to be tested to see if it actually puts our crafts into the list
+        hideoutProductions.push(...productionJson);
     }
 }
 
