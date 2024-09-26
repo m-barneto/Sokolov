@@ -1,0 +1,12 @@
+{
+    // Multiplies trader prices
+    "priceMultiplier": 1,
+    // Min refresh timer for the trader to restock (in seconds)
+    "traderRefreshMin": 1800,
+    // Max refresh timer for the trader to restock (in seconds)
+    "traderRefreshMax": 1800,
+    // Whether or not trader stock is unlimited
+    "unlimitedStock": false,
+    // Whether or not player's have unlimited buys
+    "unlimitedBuyRestriction": false
+}

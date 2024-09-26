@@ -4,3 +4,5 @@
 **/dist/
 updateTypes.ps1
 NewTypes/
+
+.fake

@@ -1,5 +1,5 @@
 {
-    "_id": "cat",
+    "_id": "66f40eedc82974df308b27c4",
     "working": true,
     "availableInRaid": false,
     "items_buy": {
@@ -11,11 +11,11 @@
     },
     "items_buy_prohibited": {},
     "customization_seller": false,
-    "name": "Cat",
+    "name": "Sokolov",
     "surname": " ",
-    "nickname": "Maxwell",
-    "location": "Here is the cat shop",
-    "avatar": "/files/trader/avatar/cat.jpg",
+    "nickname": "Sokolov",
+    "location": "Unknown",
+    "avatar": "/files/trader/avatar/66f40eedc82974df308b27c4.jpg",
     "balance_rub": 5000000,
     "balance_dol": 0,
     "balance_eur": 0,
